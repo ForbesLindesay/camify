@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Camify</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="container-fluid">
+
+      <h1>Camify</h1>
+      <p>Add a default domain name to any addresses that don't already have one.  You can enter them below and if they don't already have a domain, the one you specify as the default extension will be added</p>
+      Default Extension
+      <div class="input-prepend">
+        <span class="add-on">@</span><input class="span4" id="extension" size="16" type="text" placeholder="cam.ac.uk">
+      </div>
+      <p>Addresses:</p>
+      <div class="row-fluid"><textarea id="input" class="span12" placeholder="enter addresses one per line..."></textarea></div>
+      <button id="fix" class="btn">Fix</button>
+
+    </div>
+    <script>
+      document.getElementById('fix').addEventListener('click', function () {
+        var extension = document.getElementById('extension').value || 'cam.ac.uk';
+        var input = document.getElementById('input').value;
+        document.getElementById('input').value = input.replace(/^([^\@\n\r]+)$/gm, '$1@' + extension);
+      }, false);
+    </script>
+  </body>
+</html>
